@@ -53,6 +53,8 @@ static const char* equalDelimiters = "__curlequal__";
 
 static void appendDotIfNeeded(String* domain)
 {
+    // According to RFC6265 we should add dot.
+#if 0
     Vector<char> domainBuffer = WTF::ensureStringToUTF8(*domain, false);
     int dotCount = 0;
     for (size_t i = 0; i < domainBuffer.size(); ++i) {
@@ -62,6 +64,10 @@ static void appendDotIfNeeded(String* domain)
 
     if (1 == dotCount)
         domain->insert((const LChar *)".", 1, 0);
+#else
+    if (!domain->isEmpty() && domain->operator[](0) != '.')
+        domain->insert(".", 0);
+#endif
 }
 
 static void addMatchingCurlCookie(const char* cookie, const String& domain, const String& path, StringBuilder& cookies, bool httponly)
