@@ -65,7 +65,7 @@ static void appendDotIfNeeded(String* domain)
     if (1 == dotCount)
         domain->insert((const LChar *)".", 1, 0);
 #else
-    if (!domain->isEmpty() && domain->operator[](0) != '.')
+    if (!domain->isEmpty() && '.' != domain->operator[](0))
         domain->insert(".", 0);
 #endif
 }
