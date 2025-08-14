@@ -1091,11 +1091,6 @@ static void setTitle(HWND hWnd, const std::wstring& title)
     }
 
     std::wstring titleString = title;
-    if (*isRegistered)
-        titleString = L"(VIP已注册) " + titleString;
-    else
-        titleString = L"(VIP未注册) " + titleString;
-
     if (titleString.size() > 65) {
         titleString = titleString.substr(0, 65);
         titleString += L"...";

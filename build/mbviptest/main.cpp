@@ -419,17 +419,8 @@ void createSimpleMb()
     //::mbLoadHTML(view, "<html><head><style></style><script type=\"text/javascript\">var test = 'test';</script></head><body></body></html>");
     //https://www.baidu.com/s?wd=123
 
-    char* randUrl = (char*)malloc(0x100);
-    sprintf_s(randUrl, 0x99, "https://www.baidu.com/s?wd=%d", ::GetTickCount());
-
-    ::mbLoadURL(view, "file:///G:/mycode/mbvip/out/x86/Release/1234.htm");
-//     //::mbLoadURL(view, "file:///C:/Users/weo/AppData/Local/AllMobilize/parent.htm");
-//     //::mbLoadURL(view, "file:///E:/mycode/mtmb/Debug/guiji.htm");
-//     //::mbLoadURL(view, "https://passport.csdn.net/account/login");//http://www.17sucai.com/pins/demo-show?id=23150
-// 
-//     mbOnJsQuery(view, onJsQuery, (void*)1);
-
-    free(randUrl);
+    ::mbLoadURL(view, "https://www.baidu.com");
+    // mbOnJsQuery(view, onJsQuery, (void*)1);
 }
 
 void createMbClient()
@@ -438,72 +429,26 @@ void createMbClient()
     rootWin->createRootWindow();
 }
 
-void SearchHex()
-{
-    unsigned char code[] = {
-        0x48,0x31,0xE0,// xor rax,rsp
-        0x48, 0x89, 0x44, 0x24, 0x48,//       mov         qword ptr[rsp + 48h],rax };
-        0x48, 0x8B, 0x81, 0x50, 0x04, 0x00, 0x00,// mov         rax, qword ptr[rcx + 450h]
-        0x8B, 0x08,//                mov         ecx, dword ptr[rax]      
-        0x89, 0x4C, 0x24, 0x30,//          mov         dword ptr[rsp + 30h], ecx     
-        0x48, 0x8B, 0x48, 0x08,//          mov         rcx, qword ptr[rax + 8]      
-        0x48, 0x89, 0x4C, 0x24, 0x38,//       mov         qword ptr[rsp + 38h], rcx
-        0x48, 0x85, 0xC9,// test        rcx, rcx
-    };
-
-    const wchar_t* path = L"E:\\chroium\\M105\\src\\out\\rx64\\chrome.dll";
-    HMODULE hMod = LoadLibraryW(path);
-    //wkeInitialize();
-
-    std::vector<char> buffer;
-    readFile(path, &buffer);
-    for (size_t i = 0; i < buffer.size(); ++i) {
-        //unsigned char* addr = (unsigned char*)buffer.data();
-        unsigned char* addr = (unsigned char*)hMod;
-        addr += i;
-
-        bool notFind = false;
-        for (size_t j = 0; j < sizeof(code); ++j) {
-            if (addr[j] != code[j]) {
-                notFind = true;
-                break;
-            }
-        }
-        if (!notFind) {
-            char* output = (char*)malloc(0x100);
-            sprintf_s(output, 0x99, "SearchHex find: 0x%p\n", (addr));
-            OutputDebugStringA(output);
-            free(output);
-        }
-    }
-    OutputDebugStringA("SearchHex end\n");
-}
-
-
 int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow)
 {
-//     SearchHex();
-//     return 0;
-
     RegWndClass(CLS_WINDOW, CS_HREDRAW | CS_VREDRAW);
     
     mbSettings* settings = new mbSettings();
     memset(settings, 0, sizeof(settings));
 
-    settings->mask |= MB_SETTING_PROXY;
-    settings->proxy.type = MB_PROXY_HTTP;
-    strcpy(settings->proxy.hostname, "proxy.tigerproxy.top");
-    settings->proxy.port = 52222;
-    strcpy(settings->proxy.username, "customer-");
-    strcpy(settings->proxy.password, "HGFoyZeVt");
+    //settings->mask |= MB_SETTING_PROXY;
+    //settings->proxy.type = MB_PROXY_HTTP;
+    //strcpy(settings->proxy.hostname, "proxy.tigerproxy.top");
+    //settings->proxy.port = 52222;
+    //strcpy(settings->proxy.username, "customer-");
+    //strcpy(settings->proxy.password, "HGFoyZeVt");
 
-    //settings->mask = MB_ENABLE_NODEJS;
-    //settings->mask = MB_ENABLE_DISABLE_CC;
-    //settings->mask |= MB_ENABLE_DISABLE_H5VIDEO;
-    //settings->mask |= MB_ENABLE_ENABLE_SWIFTSHAER;
-    //settings->mask |= MB_ENABLE_ENABLE_EGLGLES2;
+    ////settings->mask = MB_ENABLE_NODEJS;
+    ////settings->mask = MB_ENABLE_DISABLE_CC;
+    ////settings->mask |= MB_ENABLE_DISABLE_H5VIDEO;
+    ////settings->mask |= MB_ENABLE_ENABLE_SWIFTSHAER;
+    ////settings->mask |= MB_ENABLE_ENABLE_EGLGLES2;
     settings->version = kMbVersion;
-    //settings->mainDllPath = L"E:\\mycode\\mtmb\\Debug\\node.dll";
 
 #ifdef _DEBUG
     mbSetMbDllPath(L"miniblink_d.dll");
@@ -519,10 +464,6 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmd
 # endif
 #endif
     
-    //mbSetMbMainDllPath(L"G:\\mycode\\mb\\out\\Debug\\node.dll");
-
-    //settings->mainDllPath = L"node_v8_7_5.dll";
-    //mbSetMbMainDllPath(L"node_v8_7_5.dll");
 
 //     mbFillFuncPtr();
 //     mbSettings* settings = mbCreateInitSettings();
@@ -539,7 +480,7 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmd
 //     mbUtilSetDefaultPrinterSettings(NULL_WEBVIEW, &printerSettings);
 
     createMbClient();
-    //createSimpleMb();
+    createSimpleMb();
     
 //     MSG msg = { 0 };
 //     while (true) {
