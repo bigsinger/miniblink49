@@ -193,7 +193,7 @@
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
       <AdditionalLibraryDirectories>$(SolutionDir)..\out\$(Configuration)\;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>angle.lib;orig_chrome.lib;InjectTool.lib;version.lib;harfbuzz.lib;ots.lib;Crypt32.lib;Wldap32.lib;Imm32.lib;libxml.lib;zlib.lib;skia.lib;libjpeg.lib;libpng.lib;libwebp.lib;openssl.lib;nodejs.lib;v8_7_5_1.lib;Msimg32.lib;winmm.lib;Ws2_32.lib;Usp10.lib;Shlwapi.lib;wininet.lib;GDIPlus.lib;DbgHelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)miniblink_d.dll</OutputFile>
       <ImportLibrary>$(OutDir)node.lib</ImportLibrary>
       <IgnoreSpecificDefaultLibraries>LIBCMT.lib</IgnoreSpecificDefaultLibraries>

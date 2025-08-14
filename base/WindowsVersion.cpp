@@ -4,7 +4,8 @@
 
 
 /////////////////////////////////////////////////
-// 临时找的这个地方，用来做三方lib库的链接，避免通过项目属性来设置，
+// 临时找的这个地方，用来做三方lib库的链接，避免通过项目属性来设置。
+// 一是修改属性很麻烦，多个编译配置都要动；二是修改编译属性后就要重新编译很耗时；
 // 如有更好的地方，请转移。
 /////////////////////////////////////////////////
 #ifdef _WIN32
@@ -14,6 +15,35 @@
 #pragma comment(lib, "../../3rdlib/libcurl_a.lib")
 #endif // _WIN64 
 #endif // _WIN32
+
+
+#pragma comment(lib, "angle.lib")
+#pragma comment(lib, "harfbuzz.lib")
+#pragma comment(lib, "libjpeg.lib")
+#pragma comment(lib, "libpng.lib")
+#pragma comment(lib, "libwebp.lib")
+#pragma comment(lib, "libxml.lib")
+#pragma comment(lib, "openssl.lib")
+#pragma comment(lib, "ots.lib")
+#pragma comment(lib, "skia.lib")
+#pragma comment(lib, "zlib.lib") 
+
+#pragma comment(lib, "v8_7_5_1.lib")
+//#pragma comment(lib, "InjectTool.lib")
+#pragma comment(lib, "orig_chrome.lib")
+
+#pragma comment(lib, "version.lib")
+#pragma comment(lib, "Crypt32.lib")
+#pragma comment(lib, "Wldap32.lib")
+#pragma comment(lib, "Imm32.lib")
+#pragma comment(lib, "Msimg32.lib")
+#pragma comment(lib, "winmm.lib")
+#pragma comment(lib, "Ws2_32.lib")
+#pragma comment(lib, "Usp10.lib")
+#pragma comment(lib, "Shlwapi.lib")
+#pragma comment(lib, "wininet.lib")
+#pragma comment(lib, "GDIPlus.lib")
+#pragma comment(lib, "DbgHelp.lib")
 /////////////////////////////////////////////////
 
 
