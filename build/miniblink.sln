@@ -42,8 +42,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "orig_chrome", "orig_chrome\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "angle", "angle\angle.vcxproj", "{A28F4540-CD50-448E-8A05-27AF9606AA0B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "node", "node\node.vcxproj", "{416F8F99-1338-4514-A44C-28CCEB5FD710}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mbvipwrap", "mbvipwrap\mbvipwrap.vcxproj", "{850CF34A-9AB8-4329-9E92-5CE428130335}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mbviptest", "mbviptest\mbviptest.vcxproj", "{651890C3-F2BB-46F7-A64D-B2AF797AA856}"
@@ -335,21 +333,6 @@ Global
 		{A28F4540-CD50-448E-8A05-27AF9606AA0B}.Release|Win32.Build.0 = Release|Win32
 		{A28F4540-CD50-448E-8A05-27AF9606AA0B}.Release|x64.ActiveCfg = Release|x64
 		{A28F4540-CD50-448E-8A05-27AF9606AA0B}.Release|x64.Build.0 = Release|x64
-		{416F8F99-1338-4514-A44C-28CCEB5FD710}.Debug|Win32.ActiveCfg = Debug|Win32
-		{416F8F99-1338-4514-A44C-28CCEB5FD710}.Debug|Win32.Build.0 = Debug|Win32
-		{416F8F99-1338-4514-A44C-28CCEB5FD710}.Debug|x64.ActiveCfg = Debug|x64
-		{416F8F99-1338-4514-A44C-28CCEB5FD710}.Debug|x64.Build.0 = Debug|x64
-		{416F8F99-1338-4514-A44C-28CCEB5FD710}.Release_NoNode|Win32.ActiveCfg = Release_vc6|Win32
-		{416F8F99-1338-4514-A44C-28CCEB5FD710}.Release_NoNode|Win32.Build.0 = Release_vc6|Win32
-		{416F8F99-1338-4514-A44C-28CCEB5FD710}.Release_NoNode|x64.ActiveCfg = Release|x64
-		{416F8F99-1338-4514-A44C-28CCEB5FD710}.Release_NoNode|x64.Build.0 = Release|x64
-		{416F8F99-1338-4514-A44C-28CCEB5FD710}.Release_vc6|Win32.ActiveCfg = Release_vc6|Win32
-		{416F8F99-1338-4514-A44C-28CCEB5FD710}.Release_vc6|Win32.Build.0 = Release_vc6|Win32
-		{416F8F99-1338-4514-A44C-28CCEB5FD710}.Release_vc6|x64.ActiveCfg = Release_vc6|Win32
-		{416F8F99-1338-4514-A44C-28CCEB5FD710}.Release|Win32.ActiveCfg = Release|Win32
-		{416F8F99-1338-4514-A44C-28CCEB5FD710}.Release|Win32.Build.0 = Release|Win32
-		{416F8F99-1338-4514-A44C-28CCEB5FD710}.Release|x64.ActiveCfg = Release|x64
-		{416F8F99-1338-4514-A44C-28CCEB5FD710}.Release|x64.Build.0 = Release|x64
 		{850CF34A-9AB8-4329-9E92-5CE428130335}.Debug|Win32.ActiveCfg = Debug|Win32
 		{850CF34A-9AB8-4329-9E92-5CE428130335}.Debug|Win32.Build.0 = Debug|Win32
 		{850CF34A-9AB8-4329-9E92-5CE428130335}.Debug|x64.ActiveCfg = Debug|x64
