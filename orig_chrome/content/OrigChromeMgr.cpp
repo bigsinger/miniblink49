@@ -31,15 +31,15 @@
 #include "base/message_loop/message_loop.h"
 #include <Shlwapi.h>
 
+
+#ifdef _WIN32
 #ifdef _WIN64
-# pragma comment(lib, "G:/mycode/mb/out/x64Release/plugins/ffmpeg/ffmpeg_x64.dll.lib")
+#pragma comment(lib, "../../3rdlib/ffmpeg_x64.dll.lib")
 #else
-# if _DEBUG
-#  pragma comment(lib, "M:\\chromium\\chromium.bb\\src\\out\\Debug\\ffmpeg.dll.lib")
-# else
-#  pragma comment(lib, "M:\\chromium\\chromium.bb\\src\\out\\release\\ffmpeg.dll.lib")
-# endif
-#endif
+#pragma comment(lib, "../../3rdlib/ffmpeg.dll.lib")
+#endif // _WIN64 
+#endif // _WIN32
+
 
 extern HMODULE g_hModule;
 
