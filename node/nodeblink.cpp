@@ -1,5 +1,5 @@
 ﻿
-#if 1 // ENABLE_NODEJS
+#if 0 // ENABLE_NODEJS
 #define USING_UV_SHARED 1
 
 #include "node/nodeblink.h"
