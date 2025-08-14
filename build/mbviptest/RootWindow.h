@@ -1,7 +1,7 @@
 #ifndef RootWindow_h
 #define RootWindow_h
 
-#include "G:/mycode/mbvip/mtmb/core/mb.h"
+#include "../../mbvip/core/mb.h"
 
 #define IDC_NAV_BACK                    200
 #define IDC_NAV_FORWARD                 201

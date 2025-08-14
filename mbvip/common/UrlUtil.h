@@ -2,8 +2,9 @@
 #ifndef content_UrlUtil_h
 #define content_UrlUtil_h
 
-#include "content/common/StringUtil.h"
-#include "content/common/mbchar.h"
+#include "StringUtil.h"
+//#include "content/common/StringUtil.h"
+//#include "content/common/mbchar.h"
 
 namespace content {
 
@@ -28,10 +29,10 @@ public:
 
     // "1234-sss.ss?sz"  -> "1234-sss.ss"
     // "1234-sss.ss/" -> "1234-sss.ss"
-    static std::u16string getSaveNameFromUrl(const std::string& url)
+    static std::wstring getSaveNameFromUrl(const std::string& url)
     {
         if (0 == url.size())
-            return std::u16string((const char16_t*)mbu16(""));
+            return std::wstring(L"");
 
         //         size_t pos1 = url.find_last_of('\\');
         //         if (std::string::npos == pos1)
@@ -57,7 +58,7 @@ public:
         if (pos3 < pos)
             pos3 = url.size();
         std::string path = url.substr(pos, pos3 - pos);
-        return utf8ToUtf16(path);
+        return common::utf8ToUtf16(path);
     }
 };
 

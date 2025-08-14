@@ -1231,7 +1231,7 @@ static mbDownloadOpt MB_CALL_TYPE onDownloadCallback(mbWebView webView,
     bind.finishCallback = onNetJobDataFinishCallback;
     bind.saveNameCallback = nullptr;
 
-    return mbPopupDialogAndDownload(webView, param, expectedContentLength, url, mime, disposition, job, dataBind, &bind);
+    return mbPopupDialogAndDownload(webView, (const mbDialogOptions*)param, expectedContentLength, url, mime, disposition, job, dataBind, &bind);
     //return mbDownloadByPath(webView, param, L"P:\\", expectedContentLength, url, mime, disposition, job, dataBind, &bind);
 }
 
