@@ -83,7 +83,7 @@ static std::wstring getSaveName(std::string contentDisposition, std::string url)
     std::wstring result = getSaveNameFromContentDisposition(contentDisposition);
     if (!result.empty())
         return result;
-    result = UrlUtil::getSaveNameFromUrl(url);
+    result = content::UrlUtil::getSaveNameFromUrl(url);
 
     std::string resultUtf8 = common::utf16ToUtf8(result.c_str());
 

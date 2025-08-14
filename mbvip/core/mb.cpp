@@ -225,105 +225,9 @@ const wchar_t* getParentName()
     return name;
 }
 
-static std::string hashRegister(const std::string& str, const std::string& key)
-{
-    std::string result;
-    for (size_t i = 0; i < str.size(); ++i) {
-        result += str[i] ^ (key[i % key.size()]);
-    }
-    return result;
-}
-
-static void licenseCheck();
-static int s_licenseCheckCount = 0;
-
-static void licenseCheckImpl()
-{
-    std::vector<wchar_t> path;
-    path.resize(MAX_PATH + 1);
-    memset(&path[0], 0, sizeof(wchar_t) * (MAX_PATH + 1));
-    ::GetModuleFileNameW(g_hModule, &path[0], MAX_PATH);
-    ::PathRemoveFileSpecW(&path[0]);
-    ::PathAppendW(&path[0], L"license.key");
-
-    std::vector<char> buffer;
-    common::readFile(&path[0], &buffer);
-
-    if (buffer.size() == 0) {
-        const wchar_t* name = getParentName();
-        const WCHAR* blackParentProcessList[] = {
-            L"devenv.exe",
-            L"e.exe",
-            L"delphi32.exe",
-            nullptr,
-        };
-
-        bool find = false;
-        for (int i = 0; blackParentProcessList[i]; ++i) {
-            if (0 == _wcsicmp(name, blackParentProcessList[i])) {
-                find = true;
-                break;
-            }
-        }
-        delete name;
-
-        HMODULE hMod = LoadLibraryW(L"Kernel32.dll");
-        typedef BOOL(__stdcall* FN_IsDebuggerPresent)();
-        FN_IsDebuggerPresent pIsDebuggerPresent = (FN_IsDebuggerPresent)GetProcAddress(hMod, "IsDebuggerPresent");
-
-        if (find || pIsDebuggerPresent()) {
-            ::MessageBoxW(nullptr, L"您使用的是未注册版本，请到miniblink.net注册后使用，支持下正版", L"未注册", 0);
-            ::ExitProcess(-1);
-        }
-    }
-    --s_licenseCheckCount;
-
-    licenseCheck();
-}
-
-static void licenseCheck()
-{
-// #if ENABLE_VERIFY && ENABLE_IN_MB_MAIN
-//     static bool isInit = false;
-//     if (!isInit) {
-//         isInit = true;
-//         SqBind* verify = SqBind::getInst();
-// 
-// #if 1
-// #if _DEBUG
-//         ::DeleteFileW(L"p:\\license.key");
-//         // std::string requestCode = verify->createRequestCode("email:weolar@qq.com");
-//         std::string license = verify->createLicense("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");
-// 
-//         HANDLE hFile = CreateFileW(L"p:\\license.key", GENERIC_WRITE, FILE_SHARE_WRITE, NULL, CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL); // L"D:\\license.key"
-//         if (INVALID_HANDLE_VALUE == hFile)
-//             DebugBreak();
-// 
-//         DWORD numberOfBytesWrite = 0;
-//         BOOL b = ::WriteFile(hFile, license.c_str(), license.size(), &numberOfBytesWrite, nullptr);
-//         ::CloseHandle(hFile);
-// #endif
-// #endif
-//         char* output = (char*)malloc(0x100);
-//         sprintf_s(output, 0x99, "licenseCheck: %d\n", ::GetCurrentThreadId());
-//         OutputDebugStringA(output);
-//         free(output);
-// 
-//         verify->timerFire();
-//     }
-// #endif
-
-    if (0 == s_licenseCheckCount) {
-        ++s_licenseCheckCount;
-        content::postDelayTaskToMainThread(FROM_HERE, [] { licenseCheckImpl(); }, 30000);
-    }
-}
-
 mbWebView MB_CALL_TYPE mbCreateWebWindow(mbWindowType type, HWND parent, int x, int y, int width, int height)
 {
     checkThreadCallIsValid(__FUNCTION__);
-
-    licenseCheck();
 
     mb::MbWebView* result = new mb::MbWebView();
     result->createWkeWebWindowInUiThread(type, parent, x, y, width, height);
@@ -337,8 +241,6 @@ mbWebView MB_CALL_TYPE mbCreateWebWindow(mbWindowType type, HWND parent, int x, 
 mbWebView MB_CALL_TYPE mbCreateWebCustomWindow(HWND parent, DWORD style, DWORD styleEx, int x, int y, int width, int height)
 {
     checkThreadCallIsValid(__FUNCTION__);
-
-    licenseCheck();
 
     mb::MbWebView* result = new mb::MbWebView();
     result->createWkeWebWindowImplInUiThread(parent, style, styleEx, x, y, width, height);

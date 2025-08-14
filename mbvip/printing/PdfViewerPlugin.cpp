@@ -117,7 +117,7 @@ void PdfViewerPlugin::onSavePdf()
     InterlockedIncrement((long *)&g_savePdfCount);
 
     std::string url = m_url;
-    std::wstring urlW = UrlUtil::getSaveNameFromUrl(url);
+    std::wstring urlW = content::UrlUtil::getSaveNameFromUrl(url);
     SavePdfThreadData* data = new SavePdfThreadData(m_pdfData, urlW);
 
     unsigned int threadId = 0;

@@ -1,7 +1,7 @@
 ﻿#ifndef _NODEBLINK_H_
 #define _NODEBLINK_H_
 
-#if 1 // ENABLE_NODEJS
+#if 0 // ENABLE_NODEJS
 
 #define NODE_ARCH "ia32"
 #define NODE_PLATFORM "win32"

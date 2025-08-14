@@ -2,6 +2,22 @@
 #include "base/WindowsVersion.h"
 #include <windows.h>
 
+
+/////////////////////////////////////////////////
+// 临时找的这个地方，用来做三方lib库的链接，避免通过项目属性来设置，
+// 如有更好的地方，请转移。
+/////////////////////////////////////////////////
+#ifdef _WIN32
+#ifdef _WIN64
+//#pragma comment(lib, "../../3rdlib/libcurl_a.lib")
+#else
+#pragma comment(lib, "../../3rdlib/libcurl_a.lib")
+#endif // _WIN64 
+#endif // _WIN32
+/////////////////////////////////////////////////
+
+
+
 namespace base {
 
 WindowsVersion getWindowsVersion(int* major, int* minor)
